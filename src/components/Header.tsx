@@ -7,9 +7,9 @@ import Logo from "./Logo";
 export default function Header() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
-  const isYogoPage = pathname === "/yogo";
+  const isYogaPage = pathname === "/yoga";
   const isClassesPage = pathname === "/classes";
-  const isWhiteBackgroundPage = isYogoPage || isClassesPage;
+  const isWhiteBackgroundPage = isYogaPage || isClassesPage;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -67,14 +67,14 @@ export default function Header() {
           CLASSES
         </Link>
         <Link
-          href="/yogo"
+          href="/yoga"
           className={`transition-colors ${
             isWhiteBackgroundPage
               ? "hover:text-secondary"
               : "hover:text-white/80"
           }`}
         >
-          YOGO
+          YOGA
         </Link>
         <Link
           href="/contact"
@@ -199,15 +199,15 @@ export default function Header() {
                   CLASSES
                 </Link>
                 <Link
-                  href="/yogo"
+                  href="/yoga"
                   onClick={() => setIsMenuOpen(false)}
                   className={`text-lg font-medium py-3 px-4 rounded-lg transition-colors ${
-                    pathname === "/yogo"
+                    pathname === "/yoga"
                       ? "bg-primary text-white"
                       : "text-primary hover:bg-accent/30"
                   }`}
                 >
-                  YOGO
+                  YOGA
                 </Link>
                 <Link
                   href="/contact"

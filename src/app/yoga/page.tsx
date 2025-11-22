@@ -1,12 +1,12 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import YogoContent from "@/components/YogoContent";
+import YogaContent from "@/components/YogaContent";
 
-export default function YogoPage() {
+export default function YogaPage() {
   return (
     <main className="min-h-screen flex flex-col bg-white">
       <Header />
-      <YogoContent />
+      <YogaContent />
       <Footer />
     </main>
   );

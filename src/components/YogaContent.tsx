@@ -199,7 +199,7 @@ const yogaCategories = [
   },
 ];
 
-export default function YogoContent() {
+export default function YogaContent() {
   const [activeTab, setActiveTab] = useState(yogaCategories[0].id);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
 
