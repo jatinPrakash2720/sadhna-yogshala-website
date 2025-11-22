@@ -75,16 +75,6 @@ export default function Header() {
           YOGO
         </Link>
         <Link
-          href="/about"
-          className={`transition-colors ${
-            isWhiteBackgroundPage
-              ? "hover:text-secondary"
-              : "hover:text-white/80"
-          }`}
-        >
-          SHOP
-        </Link>
-        <Link
           href="/contact"
           className={`transition-colors ${
             isWhiteBackgroundPage
@@ -93,16 +83,6 @@ export default function Header() {
           }`}
         >
           ABOUT
-        </Link>
-        <Link
-          href="/blog"
-          className={`transition-colors ${
-            isWhiteBackgroundPage
-              ? "hover:text-secondary"
-              : "hover:text-white/80"
-          }`}
-        >
-          BLOG
         </Link>
         <Link
           href="/contact"
