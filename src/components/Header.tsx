@@ -9,7 +9,10 @@ export default function Header() {
   const isHomePage = pathname === "/";
   const isYogaPage = pathname === "/yoga";
   const isClassesPage = pathname === "/classes";
-  const isWhiteBackgroundPage = isYogaPage || isClassesPage;
+  const isSignInPage = pathname === "/sign-in";
+  const isLoginPage = pathname === "/login";
+  const isWhiteBackgroundPage =
+    isYogaPage || isClassesPage || isSignInPage || isLoginPage;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -21,7 +24,11 @@ export default function Header() {
       <div className="flex items-center gap-3">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <Logo size={40} className="drop-shadow-sm" variant={isHomePage ? "white" : "green"} />
+          <Logo
+            size={40}
+            className="drop-shadow-sm"
+            variant={isHomePage ? "white" : "green"}
+          />
         </Link>
         <div className="flex flex-col">
           <span
@@ -96,33 +103,55 @@ export default function Header() {
         >
           CONTACT
         </Link>
-      </nav>
-      <button
-        onClick={() => setIsMenuOpen(true)}
-        className={`lg:hidden ${
-          isWhiteBackgroundPage
-            ? "text-primary bg-accent/30"
-            : "text-white bg-primary/20 backdrop-blur-sm"
-        } px-4 py-2 rounded-full font-medium ${
-          isWhiteBackgroundPage ? "hover:bg-accent/50" : "hover:bg-primary/30"
-        } transition-all`}
-      >
-        {/* Hamburger icon */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="w-6 h-6"
+        <Link
+          href="/login"
+          className={`px-4 py-2 rounded-full font-medium text-sm transition-all ${
+            isWhiteBackgroundPage
+              ? "bg-primary text-white hover:bg-primary/90"
+              : "bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm"
+          }`}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3.75 6.75h16.5m-16.5 5.25h16.5m-16.5 5.25h16.5"
-          />
-        </svg>
-      </button>
+          LOGIN
+        </Link>
+      </nav>
+      <div className="flex items-center gap-3 lg:hidden">
+        <Link
+          href="/login"
+          className={`px-4 py-2 rounded-full font-medium text-sm transition-all ${
+            isWhiteBackgroundPage
+              ? "bg-primary text-white hover:bg-primary/90"
+              : "bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm"
+          }`}
+        >
+          LOGIN
+        </Link>
+        <button
+          onClick={() => setIsMenuOpen(true)}
+          className={`${
+            isWhiteBackgroundPage
+              ? "text-primary bg-accent/30"
+              : "text-white bg-primary/20 backdrop-blur-sm"
+          } px-4 py-2 rounded-full font-medium ${
+            isWhiteBackgroundPage ? "hover:bg-accent/50" : "hover:bg-primary/30"
+          } transition-all`}
+        >
+          {/* Hamburger icon */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3.75 6.75h16.5m-16.5 5.25h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </button>
+      </div>
 
       {/* Side Menu */}
       {isMenuOpen && (
@@ -132,7 +161,7 @@ export default function Header() {
             className="fixed inset-0 bg-black/50 z-[100] lg:hidden"
             onClick={() => setIsMenuOpen(false)}
           />
-          
+
           {/* Side Menu Panel */}
           <div
             className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white z-[101] shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden ${
@@ -230,6 +259,17 @@ export default function Header() {
                   }`}
                 >
                   CONTACT
+                </Link>
+                <Link
+                  href="/login"
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`text-lg font-medium py-3 px-4 rounded-lg transition-colors mt-auto ${
+                    pathname === "/login"
+                      ? "bg-primary text-white"
+                      : "bg-primary text-white hover:bg-primary/90"
+                  }`}
+                >
+                  LOGIN
                 </Link>
               </nav>
             </div>

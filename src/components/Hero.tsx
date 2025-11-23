@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -22,9 +23,12 @@ export default function Hero() {
           <span className="font-normal">YOGA IS YOUR NATURAL STATE</span>
         </h1>
         
-        <button className="bg-primary text-white px-10 py-4 rounded-full font-bold text-sm tracking-widest hover:bg-opacity-90 transition-all shadow-lg uppercase mt-8">
-          Learn More
-        </button>
+        <Link
+          href="/sign-in"
+          className="inline-block bg-primary text-white px-10 py-4 rounded-full font-bold text-sm tracking-widest hover:bg-opacity-90 transition-all shadow-lg uppercase mt-8"
+        >
+          Join Now
+        </Link>
       </div>
       
       {/* Navigation Arrows (Visual) */}
