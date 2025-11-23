@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import LatestClasses from "@/components/LatestClasses";
-import Membership from "@/components/Membership";
+import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -11,9 +11,9 @@ export default function Home() {
       <Header />
       <Hero />
       <div className="flex flex-col gap-20 pb-20">
-        <Services />
+        {/* <Services /> */}
         <LatestClasses />
-        <Membership />
+        <Testimonials />
         <Footer />
       </div>
     </main>
