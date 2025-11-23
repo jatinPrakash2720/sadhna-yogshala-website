@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Image from "next/image";
 
 const categories = ["Beginners Yoga", "Stretching", "Fly-Yoga", "Yin Yoga", "Flo Yoga"];

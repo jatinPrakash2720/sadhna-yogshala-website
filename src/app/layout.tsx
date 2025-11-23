@@ -16,6 +16,9 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Sadhana Yogshala",
   description: "Modern Yoga & Fitness Studio",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

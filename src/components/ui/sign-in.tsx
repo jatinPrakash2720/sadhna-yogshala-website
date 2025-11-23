@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -9,7 +9,7 @@ interface SignInProps {
   isLogin?: boolean;
 }
 
-export const AnimatedSignIn: React.FC<SignInProps> = ({ isLogin = false }) => {
+export const AnimatedSignIn = ({ isLogin = false }: SignInProps) => {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
@@ -42,8 +42,6 @@ export const AnimatedSignIn: React.FC<SignInProps> = ({ isLogin = false }) => {
   return (
     <div className="min-h-screen mt-20 w-full bg-white">
       <div className="flex items-center justify-center p-4 md:p-6 relative">
-        {/* Back Button - Top Left Corner */}
-
         <div
           className={`w-full max-w-md md:max-w-lg lg:max-w-6xl overflow-hidden rounded-3xl bg-white shadow-2xl transition-all duration-500 ${
             formVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
@@ -51,7 +49,7 @@ export const AnimatedSignIn: React.FC<SignInProps> = ({ isLogin = false }) => {
         >
           <button
             onClick={() => router.back()}
-            className="absolute  left-6 top-6 lg:left-10 lg:top-10 p-2 rounded-full border border-primary/30 text-primary hover:bg-primary hover:text-white transition-colors z-50 bg-white shadow-sm"
+            className="absolute left-6 top-6 lg:left-10 lg:top-10 p-2 rounded-full border border-primary/30 text-primary hover:bg-primary hover:text-white transition-colors z-50 bg-white shadow-sm"
             aria-label="Go back"
           >
             <svg
@@ -70,10 +68,8 @@ export const AnimatedSignIn: React.FC<SignInProps> = ({ isLogin = false }) => {
             </svg>
           </button>
           <div className="flex flex-col lg:flex-row">
-            {/* Left side - Statistics and Images Collage */}
             <div className="hidden lg:block w-full lg:w-3/5 bg-accent/10 p-8">
               <div className="grid grid-cols-2 grid-rows-2 gap-4 h-full overflow-hidden">
-                {/* Top left - Yoga pose */}
                 <div className="overflow-hidden rounded-2xl">
                   <img
                     src="https://images.unsplash.com/photo-1506126613408-eca07ce68773"
@@ -83,9 +79,6 @@ export const AnimatedSignIn: React.FC<SignInProps> = ({ isLogin = false }) => {
                   />
                 </div>
 
-                {/* Middle left - Meditation */}
-
-                {/* Middle right - Yoga class */}
                 <div className="overflow-hidden rounded-2xl">
                   <img
                     src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b"
@@ -95,7 +88,6 @@ export const AnimatedSignIn: React.FC<SignInProps> = ({ isLogin = false }) => {
                   />
                 </div>
 
-                {/* Bottom left - Stat card */}
                 <div
                   className="rounded-2xl flex flex-col justify-center items-center p-6 text-white bg-secondary"
                   style={{
@@ -114,7 +106,6 @@ export const AnimatedSignIn: React.FC<SignInProps> = ({ isLogin = false }) => {
                   </p>
                 </div>
 
-                {/* Bottom right - Nature */}
                 <div className="overflow-hidden rounded-2xl">
                   <img
                     src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29"
@@ -126,7 +117,6 @@ export const AnimatedSignIn: React.FC<SignInProps> = ({ isLogin = false }) => {
               </div>
             </div>
 
-            {/* Right side - Sign in form */}
             <div
               className="w-full lg:w-2/5 p-6 md:p-8 lg:p-12 bg-white text-primary"
               style={{
@@ -213,7 +203,7 @@ export const AnimatedSignIn: React.FC<SignInProps> = ({ isLogin = false }) => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className={`flex w-full justify-center rounded-lg py-3 px-4 text-sm font-semibold text-white shadow-lg transition-all duration-300 bg-primary hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
+                  className={`flex w-full justify-center rounded-lg py-3 px-4 text-sm font-semibold text-white shadow-lg transition-all duration-300 bg-primary hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
                     isLoading ? "cursor-not-allowed opacity-70" : ""
                   }`}
                 >
@@ -246,11 +236,9 @@ export const AnimatedSignIn: React.FC<SignInProps> = ({ isLogin = false }) => {
                 </button>
 
                 <div className="relative flex items-center py-2">
-                  <div className="flex-grow border-t border-accent/30"></div>
-                  <span className="flex-shrink mx-4 text-sm text-secondary">
-                    OR
-                  </span>
-                  <div className="flex-grow border-t border-accent/30"></div>
+                  <div className="grow border-t border-accent/30"></div>
+                  <span className="shrink mx-4 text-sm text-secondary">OR</span>
+                  <div className="grow border-t border-accent/30"></div>
                 </div>
 
                 <button
