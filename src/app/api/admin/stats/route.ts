@@ -39,7 +39,7 @@ export async function GET() {
     // Note: This assumes current course price. For strict accounting, 
     // you should store 'amountPaid' in a separate Transaction table.
     const totalRevenue = enrollments.reduce<number>(
-      (sum, enrollment) => sum + (enrollment.course?.price || 0),
+      (sum: number, enrollment: { course: { price: number } | null }) => sum + (enrollment.course?.price || 0),
       0
     );
 
