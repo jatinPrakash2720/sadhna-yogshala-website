@@ -4,9 +4,9 @@ import { redis } from "@/lib/api/redis"; // <--- Import Redis
 
 export async function GET(
   req: Request,
-  { params }: { params: { courseId: string } }
+  { params }: { params: Promise<{ courseId: string }> }
 ) {
-  const { courseId } = params;
+  const { courseId } = await params;
   const CACHE_KEY = `schedule:${courseId}`; // Unique key for this course
 
   try {

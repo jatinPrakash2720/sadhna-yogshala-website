@@ -17,12 +17,13 @@ const updateCourseSchema = z.object({
 // --- PATCH: Update Course ---
 export async function PATCH(
   req: Request,
-  { params }: { params: { courseId: string } }
+  { params }: { params: Promise<{ courseId: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
     if (!session?.user?.isAdmin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
+    const { courseId } = await params;
     const body = await req.json();
     const result = updateCourseSchema.safeParse(body);
 
@@ -31,7 +32,7 @@ export async function PATCH(
     }
 
     const updatedCourse = await prisma.course.update({
-      where: { id: params.courseId },
+      where: { id: courseId },
       data: result.data,
     });
 
@@ -44,15 +45,16 @@ export async function PATCH(
 // --- DELETE: Remove Course ---
 export async function DELETE(
   req: Request,
-  { params }: { params: { courseId: string } }
+  { params }: { params: Promise<{ courseId: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
     if (!session?.user?.isAdmin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
+    const { courseId } = await params;
     // Warning: This will cascade delete classes due to schema relations
     await prisma.course.delete({
-      where: { id: params.courseId },
+      where: { id: courseId },
     });
 
     return NextResponse.json({ success: true, message: "Course deleted" });
