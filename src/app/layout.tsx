@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import LoadingWrapper from "@/components/LoadingWrapper";
-import { Providers } from "@/components/Providers";
+import AuthContext from "@/contexts/AuthContext";
+import { UIProvider } from "@/contexts/UIContext";
+import ReduxProvider from "@/providers/ReduxProvider"; // <--- Import the new provider
+import LoginModal from "@/components/LoginModal";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -32,9 +35,17 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} antialiased`}
       >
-        <Providers>
-          <LoadingWrapper>{children}</LoadingWrapper>
-        </Providers>
+        {/* 1. AuthContext (NextAuth Session) must be at the top */}
+        <AuthContext>
+          {/* 2. ReduxProvider (State & Data) replaces DataProvider */}
+          <ReduxProvider>
+            {/* 3. UIProvider (Sidebar/Toasts) */}
+            <UIProvider>
+              <LoadingWrapper>{children}</LoadingWrapper>
+              <LoginModal />
+            </UIProvider>
+          </ReduxProvider>
+        </AuthContext>
       </body>
     </html>
   );

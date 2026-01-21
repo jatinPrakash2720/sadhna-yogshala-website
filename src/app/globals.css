@@ -17,7 +17,7 @@
   --popover-foreground: #31694e; /* Dark green */
   --primary-foreground: #ffffff; /* White text on primary */
   --secondary-foreground: #ffffff; /* White text on secondary */
-  --muted: #f0e491; /* Light yellow/cream for muted backgrounds */
+  --muted: #f5f5f5; /* Light gray for muted backgrounds */
   --muted-foreground: #658c58; /* Medium green for muted text */
   --accent-foreground: #31694e; /* Dark green text on accent */
   --destructive: #dc2626; /* Red for destructive actions */
@@ -33,7 +33,7 @@
   --sidebar-foreground: #31694e; /* Dark green */
   --sidebar-primary: #31694e; /* Dark green */
   --sidebar-primary-foreground: #ffffff; /* White */
-  --sidebar-accent: #f0e491; /* Light yellow/cream for subtle hover */
+  --sidebar-accent: #f5f5f5; /* Light gray for subtle hover */
   --sidebar-accent-foreground: #31694e; /* Dark green */
   --sidebar-border: #bbc863; /* Olive green */
   --sidebar-ring: #31694e; /* Dark green */
@@ -148,7 +148,7 @@ h6 {
   --sidebar-foreground: #ffffff; /* White text */
   --sidebar-primary: #31694e; /* Primary green */
   --sidebar-primary-foreground: #ffffff; /* White text */
-  --sidebar-accent: #f0e491; /* Light yellow/cream for subtle hover */
+  --sidebar-accent: #3a3a3a; /* Dark gray for subtle hover in dark mode */
   --sidebar-accent-foreground: #31694e; /* Dark green text */
   --sidebar-border: #3a3a3a; /* Dark border */
   --sidebar-ring: #31694e; /* Primary green */

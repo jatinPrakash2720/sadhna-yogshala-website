@@ -3,7 +3,6 @@
 import * as React from "react"
 import {
   IconDashboard,
-  IconSchool,
 } from "@tabler/icons-react"
 
 import Logo from "@/components/Logo"
@@ -30,11 +29,6 @@ const data = {
       title: "Dashboard",
       url: "/dashboard",
       icon: IconDashboard,
-    },
-    {
-      title: "Lectures",
-      url: "/lectures",
-      icon: IconSchool,
     },
   ],
 }

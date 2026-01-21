@@ -125,10 +125,9 @@ exports.Prisma.UserScalarFieldEnum = {
   name: 'name',
   email: 'email',
   emailVerified: 'emailVerified',
-  sessionVersion: 'sessionVersion',
   image: 'image',
   phone: 'phone',
-  isStudent: 'isStudent',
+  isAdmin: 'isAdmin',
   telegramId: 'telegramId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -165,6 +164,37 @@ exports.Prisma.PaymentScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.CourseScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  thumbnail: 'thumbnail',
+  price: 'price',
+  type: 'type',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.EnrollmentScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  courseId: 'courseId',
+  joinedAt: 'joinedAt'
+};
+
+exports.Prisma.ClassScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  googleMeetUrl: 'googleMeetUrl',
+  googleEventId: 'googleEventId',
+  startTime: 'startTime',
+  duration: 'duration',
+  courseId: 'courseId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -179,13 +209,19 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.CourseType = exports.$Enums.CourseType = {
+  COURSE: 'COURSE',
+  WORKSHOP: 'WORKSHOP'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
   Account: 'Account',
   Session: 'Session',
-  Payment: 'Payment'
+  Payment: 'Payment',
+  Course: 'Course',
+  Enrollment: 'Enrollment',
+  Class: 'Class'
 };
 
 /**

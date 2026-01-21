@@ -3,11 +3,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Logo from "./Logo";
-import { useLoginModal } from "@/contexts/LoginModalContext";
+import { useUI } from "@/contexts/UIContext";
 
 export default function Header() {
   const pathname = usePathname();
-  const { openModal } = useLoginModal();
+  const { openLoginModal } = useUI();
   const isHomePage = pathname === "/";
   const isYogaPage = pathname === "/yoga";
   const isClassesPage = pathname === "/classes";
@@ -124,7 +124,7 @@ export default function Header() {
           OWNER
         </Link>
         <button
-          onClick={openModal}
+          onClick={openLoginModal}
           className={`px-4 py-2 rounded-full font-medium text-sm transition-all ${
             isWhiteBackgroundPage
               ? "bg-primary text-white hover:bg-primary/90"
@@ -156,7 +156,7 @@ export default function Header() {
           OWNER
         </Link>
         <button
-          onClick={openModal}
+          onClick={openLoginModal}
           className={`px-4 py-2 rounded-full font-medium text-sm transition-all ${
             isWhiteBackgroundPage
               ? "bg-primary text-white hover:bg-primary/90"
@@ -317,7 +317,7 @@ export default function Header() {
                 <button
                   onClick={() => {
                     setIsMenuOpen(false);
-                    openModal();
+                    openLoginModal();
                   }}
                   className="text-lg font-medium py-3 px-4 rounded-lg transition-colors mt-auto bg-primary text-white hover:bg-primary/90"
                 >

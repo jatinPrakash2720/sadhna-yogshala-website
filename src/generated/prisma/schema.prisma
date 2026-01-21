@@ -7,21 +7,36 @@ datasource db {
   provider = "postgresql"
 }
 
+// ==============================
+// 1. AUTH & USER
+// ==============================
+
 model User {
-  id             String    @id @default(cuid())
-  name           String?
-  email          String    @unique
-  emailVerified  DateTime?
-  sessionVersion String?   @default("v1")
-  image          String?
-  phone          String?
-  isStudent      Boolean   @default(false)
-  telegramId     String?
-  account        Account[]
-  sessions       Session[]
-  payments       Payment[]
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  phone         String?
+
+  // Role Logic: 
+  // true = YOU (The Instructor/Admin)
+  // false = Student
+  isAdmin Boolean @default(false)
+
+  // Optional: For future Telegram bot notifications
+  telegramId String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Auth Relations (Required for NextAuth)
+  accounts Account[]
+  sessions Session[]
+
+  // Business Relations
+  payments    Payment[]
+  enrollments Enrollment[]
 }
 
 model Account {
@@ -51,12 +66,85 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+// ==============================
+// 2. PAYMENTS (Razorpay)
+// ==============================
+
 model Payment {
-  id              String   @id @default(cuid())
+  id              String @id @default(cuid())
   amount          Int
-  status          String // 'captured', 'failed'
-  razorpayOrderId String   @unique
-  userId          String
-  user            User     @relation(fields: [userId], references: [id])
-  createdAt       DateTime @default(now())
+  status          String // 'captured', 'failed', 'created'
+  razorpayOrderId String @unique
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+// ==============================
+// 3. COURSES & WORKSHOPS
+// ==============================
+
+model Course {
+  id          String  @id @default(cuid())
+  title       String
+  description String?
+  thumbnail   String?
+  price       Int     @default(0) // Good to store price here
+
+  // Differentiator: Full Batch vs. 1-Day Workshop
+  type CourseType @default(COURSE)
+
+  // Content
+  classes Class[]
+
+  // Students
+  students Enrollment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum CourseType {
+  COURSE // Multiple classes, long duration
+  WORKSHOP // Single/Two day event
+}
+
+model Enrollment {
+  id       String   @id @default(cuid())
+  userId   String
+  courseId String
+  joinedAt DateTime @default(now())
+
+  user   User   @relation(fields: [userId], references: [id])
+  course Course @relation(fields: [courseId], references: [id])
+
+  // Prevents a student from buying the same course twice
+  @@unique([userId, courseId])
+}
+
+// ==============================
+// 4. CLASS (The Schedule)
+// ==============================
+
+model Class {
+  id          String  @id @default(cuid())
+  title       String
+  description String?
+
+  // The Video Link (Generated via Google Calendar API)
+  googleMeetUrl String
+
+  // The Sync ID (To update/invite students on Google Calendar later)
+  googleEventId String? @unique
+
+  startTime DateTime
+  duration  Int? // in minutes (Visual only)
+
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

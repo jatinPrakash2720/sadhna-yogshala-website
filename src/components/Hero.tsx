@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import InteractiveBentoGallery from "@/components/ui/interactive-bento-gallery";
-import { useLoginModal } from "@/contexts/LoginModalContext";
+import { useUI } from "@/contexts/UIContext";
 
 const yogaMediaItems = [
   {
@@ -63,7 +63,7 @@ const yogaMediaItems = [
 ];
 
 export default function Hero() {
-  const { openModal } = useLoginModal();
+  const { openLoginModal } = useUI();
 
   return (
     <section className="relative w-full min-h-screen flex flex-col">
@@ -89,7 +89,7 @@ export default function Hero() {
           </h1>
 
           <button
-            onClick={openModal}
+            onClick={openLoginModal}
             className="inline-block bg-primary text-white px-10 py-4 rounded-full font-bold text-sm tracking-widest hover:bg-opacity-90 transition-all shadow-lg uppercase mt-8"
           >
             Join Now
