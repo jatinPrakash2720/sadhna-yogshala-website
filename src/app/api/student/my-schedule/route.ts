@@ -19,7 +19,7 @@ export async function GET(req: Request) {
       select: { courseId: true },
     });
 
-    const courseIds = enrollments.map((e) => e.courseId);
+    const courseIds = enrollments.map((e: typeof enrollments[number]) => e.courseId);
 
     // 2. Find upcoming classes for ONLY those courses
     const classes = await prisma.class.findMany({

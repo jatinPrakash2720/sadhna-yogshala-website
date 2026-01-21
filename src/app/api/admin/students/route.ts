@@ -36,13 +36,13 @@ export async function GET() {
     });
 
     // Format the data to be cleaner for the frontend
-    const formattedStudents = students.map((student) => ({
+    const formattedStudents = students.map((student: typeof students[number]) => ({
       id: student.id,
       name: student.name || "No Name",
       email: student.email,
       phone: student.phone || "N/A",
       coursesBought: student._count.enrollments,
-      courseNames: student.enrollments.map((e) => e.course.title).join(", "),
+      courseNames: student.enrollments.map((e: typeof student.enrollments[number]) => e.course.title).join(", "),
       joinedAt: student.createdAt,
     }));
 

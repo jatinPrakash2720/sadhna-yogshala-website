@@ -25,7 +25,7 @@ export async function GET() {
   });
 
   // Format for the dashboard
-  const formatted = transactions.map((t) => ({
+  const formatted = transactions.map((t: typeof transactions[number]) => ({
     id: t.id,
     user: t.user.name || t.user.email,
     course: t.course.title,
