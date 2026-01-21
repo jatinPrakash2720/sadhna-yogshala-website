@@ -3,16 +3,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Logo from "./Logo";
+import { useUI } from "@/contexts/UIContext";
 
 export default function Header() {
   const pathname = usePathname();
+  const { openLoginModal } = useUI();
   const isHomePage = pathname === "/";
   const isYogaPage = pathname === "/yoga";
   const isClassesPage = pathname === "/classes";
-  const isSignInPage = pathname === "/sign-in";
-  const isLoginPage = pathname === "/login";
   const isWhiteBackgroundPage =
-    isYogaPage || isClassesPage || isSignInPage || isLoginPage;
+    isYogaPage || isClassesPage;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -104,7 +104,27 @@ export default function Header() {
           CONTACT
         </Link>
         <Link
-          href="/login"
+          href="/dashboard"
+          className={`px-4 py-2 rounded-full font-medium text-sm transition-all ${
+            isWhiteBackgroundPage
+              ? "bg-accent/30 text-primary hover:bg-accent/50"
+              : "bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm"
+          }`}
+        >
+          DASHBOARD
+        </Link>
+        <Link
+          href="/owner"
+          className={`px-4 py-2 rounded-full font-medium text-sm transition-all ${
+            isWhiteBackgroundPage
+              ? "bg-accent/30 text-primary hover:bg-accent/50"
+              : "bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm"
+          }`}
+        >
+          OWNER
+        </Link>
+        <button
+          onClick={openLoginModal}
           className={`px-4 py-2 rounded-full font-medium text-sm transition-all ${
             isWhiteBackgroundPage
               ? "bg-primary text-white hover:bg-primary/90"
@@ -112,11 +132,31 @@ export default function Header() {
           }`}
         >
           LOGIN
-        </Link>
+        </button>
       </nav>
       <div className="flex items-center gap-3 lg:hidden">
         <Link
-          href="/login"
+          href="/dashboard"
+          className={`px-4 py-2 rounded-full font-medium text-sm transition-all ${
+            isWhiteBackgroundPage
+              ? "bg-accent/30 text-primary hover:bg-accent/50"
+              : "bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm"
+          }`}
+        >
+          DASHBOARD
+        </Link>
+        <Link
+          href="/owner"
+          className={`px-4 py-2 rounded-full font-medium text-sm transition-all ${
+            isWhiteBackgroundPage
+              ? "bg-accent/30 text-primary hover:bg-accent/50"
+              : "bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm"
+          }`}
+        >
+          OWNER
+        </Link>
+        <button
+          onClick={openLoginModal}
           className={`px-4 py-2 rounded-full font-medium text-sm transition-all ${
             isWhiteBackgroundPage
               ? "bg-primary text-white hover:bg-primary/90"
@@ -124,7 +164,7 @@ export default function Header() {
           }`}
         >
           LOGIN
-        </Link>
+        </button>
         <button
           onClick={() => setIsMenuOpen(true)}
           className={`${
@@ -261,16 +301,28 @@ export default function Header() {
                   CONTACT
                 </Link>
                 <Link
-                  href="/login"
+                  href="/dashboard"
                   onClick={() => setIsMenuOpen(false)}
-                  className={`text-lg font-medium py-3 px-4 rounded-lg transition-colors mt-auto ${
-                    pathname === "/login"
-                      ? "bg-primary text-white"
-                      : "bg-primary text-white hover:bg-primary/90"
-                  }`}
+                  className="text-lg font-medium py-3 px-4 rounded-lg transition-colors bg-accent/30 text-primary hover:bg-accent/50"
+                >
+                  DASHBOARD
+                </Link>
+                <Link
+                  href="/owner"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-lg font-medium py-3 px-4 rounded-lg transition-colors bg-accent/30 text-primary hover:bg-accent/50"
+                >
+                  OWNER
+                </Link>
+                <button
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    openLoginModal();
+                  }}
+                  className="text-lg font-medium py-3 px-4 rounded-lg transition-colors mt-auto bg-primary text-white hover:bg-primary/90"
                 >
                   LOGIN
-                </Link>
+                </button>
               </nav>
             </div>
           </div>

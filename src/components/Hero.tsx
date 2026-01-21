@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import InteractiveBentoGallery from "@/components/ui/interactive-bento-gallery";
+import { useUI } from "@/contexts/UIContext";
 
 const yogaMediaItems = [
   {
@@ -63,6 +63,8 @@ const yogaMediaItems = [
 ];
 
 export default function Hero() {
+  const { openLoginModal } = useUI();
+
   return (
     <section className="relative w-full min-h-screen flex flex-col">
       {/* Hero Content Section */}
@@ -86,12 +88,12 @@ export default function Hero() {
             <span className="font-normal">YOGA IS YOUR NATURAL STATE</span>
           </h1>
 
-          <Link
-            href="/sign-in"
+          <button
+            onClick={openLoginModal}
             className="inline-block bg-primary text-white px-10 py-4 rounded-full font-bold text-sm tracking-widest hover:bg-opacity-90 transition-all shadow-lg uppercase mt-8"
           >
             Join Now
-          </Link>
+          </button>
         </div>
 
         {/* Navigation Arrows (Visual) */}

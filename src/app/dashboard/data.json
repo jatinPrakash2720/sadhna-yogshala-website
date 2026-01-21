@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "header": "Hatha Yoga - Morning Session",
+    "type": "Beginner",
+    "status": "Done",
+    "target": "60",
+    "limit": "20",
+    "reviewer": "Priya Sharma"
+  },
+  {
+    "id": 2,
+    "header": "Vinyasa Flow - Evening",
+    "type": "Intermediate",
+    "status": "Not Started",
+    "target": "75",
+    "limit": "15",
+    "reviewer": "Rajesh Kumar"
+  },
+  {
+    "id": 3,
+    "header": "Power Yoga - Advanced",
+    "type": "Advanced",
+    "status": "Done",
+    "target": "90",
+    "limit": "12",
+    "reviewer": "Anjali Mehta"
+  },
+  {
+    "id": 4,
+    "header": "Prenatal Yoga - Gentle",
+    "type": "Beginner",
+    "status": "Not Started",
+    "target": "60",
+    "limit": "10",
+    "reviewer": "Priya Sharma"
+  },
+  {
+    "id": 5,
+    "header": "Ashtanga Yoga - Traditional",
+    "type": "Advanced",
+    "status": "Cancelled",
+    "target": "90",
+    "limit": "15",
+    "reviewer": "Vikram Singh"
+  },
+  {
+    "id": 6,
+    "header": "Restorative Yoga - Relaxation",
+    "type": "Beginner",
+    "status": "Done",
+    "target": "75",
+    "limit": "18",
+    "reviewer": "Meera Patel"
+  },
+  {
+    "id": 7,
+    "header": "Yin Yoga - Deep Stretch",
+    "type": "Intermediate",
+    "status": "Not Started",
+    "target": "90",
+    "limit": "16",
+    "reviewer": "Rajesh Kumar"
+  },
+  {
+    "id": 8,
+    "header": "Hot Yoga - Bikram Style",
+    "type": "Advanced",
+    "status": "Done",
+    "target": "90",
+    "limit": "12",
+    "reviewer": "Anjali Mehta"
+  },
+  {
+    "id": 9,
+    "header": "Kids Yoga - Fun & Play",
+    "type": "Workshop",
+    "status": "Not Started",
+    "target": "45",
+    "limit": "20",
+    "reviewer": "Meera Patel"
+  },
+  {
+    "id": 10,
+    "header": "Meditation & Breathwork",
+    "type": "Workshop",
+    "status": "Done",
+    "target": "60",
+    "limit": "25",
+    "reviewer": "Vikram Singh"
+  },
+  {
+    "id": 11,
+    "header": "Kundalini Yoga - Energy",
+    "type": "Intermediate",
+    "status": "Not Started",
+    "target": "75",
+    "limit": "14",
+    "reviewer": "Priya Sharma"
+  },
+  {
+    "id": 12,
+    "header": "Chair Yoga - Seniors",
+    "type": "Beginner",
+    "status": "Done",
+    "target": "45",
+    "limit": "15",
+    "reviewer": "Meera Patel"
+  }
+]

@@ -17,7 +17,7 @@ const classesPlans = [
     ],
     description: "Perfect for beginners starting their yoga journey",
     buttonText: "Start Free Trial",
-    href: "/sign-up",
+    href: "/login",
     isPopular: false,
   },
   {
@@ -36,7 +36,7 @@ const classesPlans = [
     ],
     description: "Ideal for regular practitioners and yoga enthusiasts",
     buttonText: "Get Started",
-    href: "/sign-up",
+    href: "/login",
     isPopular: true,
   },
   {

@@ -10,7 +10,6 @@
 - **Foreground**: `#31694e` (Dark green for text)
 
 ### Additional Palette Colors
-- **Light Yellow/Cream**: `#f0e491` (Available for highlights/accents)
 - **White**: `#FFFFFF` (Card backgrounds, text on dark buttons)
 
 ### Functional Colors
